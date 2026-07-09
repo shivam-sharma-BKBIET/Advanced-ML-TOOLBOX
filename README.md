@@ -1,16 +1,43 @@
 # Multi-Utility Automation & Machine Learning Dashboard
 
-A production-ready SaaS platform that orchestrates a **FastAPI** backend and a **Vite/React** frontend using Nginx, featuring interactive machine learning workflows, a PyTorch deep learning simulator, automation templates, and data analytics tools.
+A premium, production-ready SaaS platform that orchestrates a **FastAPI** backend and a **Vite/React** frontend using Nginx. The platform features interactive machine learning workflows, a PyTorch deep learning sequence generation simulator, sandboxed and live communication channels, automated feature engineering, and robust model monitoring capabilities.
 
 ---
 
-## Architecture & Features
+## Key Features
 
-- **Machine Learning Predictors**: Real-time salary predictor, resume parser, electricity forecaster, laptop pricing model, and sentiment analyzer.
-- **Deep Learning Simulator**: Interactive token-by-token sequence generation using a custom 2-layer LSTM MiniLLM.
-- **Automation & Telephony Studio**: Sandboxed and production email (SMTP) and WhatsApp/SMS (Twilio) messaging flows.
-- **Data Studio**: Interactive dataset upload with offline missing value imputation and one-hot encoding feature weight analysis.
-- **Observability Hub**: Live telemetry, data drift detection, prediction history, and system health status.
+### 1. Machine Learning & Interpretability
+*   **Predictors**: Salary Predictor (Gradient Boosting Regressor) and Laptop Price Predictor.
+*   **SHAP-Based Prediction Explainability**: Real-time per-feature contribution breakdown shown after every salary/laptop prediction. Uses a cached `TreeExplainer` keyed by model version to avoid CPU bottlenecks on repetitive requests.
+*   **Batch Prediction**: CSV upload for bulk predictions with asynchronous background processing for large files, SHAP explanation computed on top candidates, and clean CSV export.
+*   **Model Registry**: Read-only tracking showing active versions, training epochs, final loss/scores, and metric parameters for `salary`, `laptop`, and `mini_llm` models.
+
+### 2. Deep Learning Simulator (PyTorch MiniLLM)
+*   **Token Generation**: Interactive, step-by-step sequence generation trace simulating token generation with a custom vocabulary.
+*   **Architecture Toggling**: Switch dynamically between a 2-layer LSTM and a minimal Transformer architecture with checkpointing support.
+*   **Text Sampling Control**: Adjust temperature and top-k parameters to explore deterministic vs. diverse/creative outputs.
+
+### 3. Data Studio & Cleaning
+*   **Multi-Format Upload**: Upload datasets in CSV, Excel (XLSX), or JSON formats.
+*   **Data Quality Scoring**: Real-time quality reports evaluating completeness, uniqueness, consistency, and outliers.
+*   **Duplicate Detection**: Computes exact duplicate and near-duplicate counts.
+*   **Class Imbalance Detection**: Highlights skewed distributions in classification targets.
+*   **Automated Feature Engineering**: Apply offline transformations such as datetime extraction (year, month, day, day of week), ratio calculations, and quantile/equal-width binning.
+
+### 4. Automation & Telephony Studio
+*   **Hybrid Architecture**: Switch between simulated sandbox mode (100% free) and live production mode.
+*   **Channels**:
+    *   **WhatsApp Messages**: Dispatched via Twilio WhatsApp API.
+    *   **Email Messages**: Sent via SMTP (with TLS).
+*   **Developer Diagnostics & Guides**: Detailed diagnostics and setup instructions for App Passwords and Twilio Sandboxes.
+*   **Interactive Simulation Suite**: Real-time smartphone and mailbox previewers.
+
+### 5. Observability Hub & UX Enhancements
+*   **Global Analytics Hub**: Live telemetry counters tracking total predictions, batch jobs, message dispatches, and datasets processed.
+*   **System Health**: Uptime tracking, database connectivity checks, and active model status.
+*   **Data Drift Monitoring**: Computes Population Stability Index (PSI) to detect moderate/significant feature drift in live inputs compared to training baselines.
+*   **Interactive Onboarding**: Step-by-step user onboarding tour powered by React Joyride to walk new visitors through dashboard modules.
+*   **Built-in Samples**: Direct download links for sample datasets (salary, laptop, messy data, and batch prediction demos) across modules.
 
 ---
 
