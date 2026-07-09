@@ -7,12 +7,15 @@ class Settings(BaseSettings):
 
     # API & CORS
     PROJECT_NAME: str = "Multi-Utility Automation & ML Dashboard"
+    CORS_ORIGINS: str = os.getenv("CORS_ORIGINS", "")
 
     @property
     def cors_origins(self) -> list[str]:
+        if self.CORS_ORIGINS:
+            return [origin.strip() for origin in self.CORS_ORIGINS.split(",") if origin.strip()]
         if self.ENVIRONMENT == "production":
             return ["http://localhost:8080", "http://127.0.0.1:8080"]
-        return ["http://localhost:5173", "http://127.0.0.1:5173"]
+        return ["http://localhost:5173", "http://127.0.0.1:5173", "http://localhost:3000"]
     
     # Auth & Database
     DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///./ml_toolbox.db")
