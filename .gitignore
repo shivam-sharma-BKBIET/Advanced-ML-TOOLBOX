@@ -1,0 +1,143 @@
+# =============================================================
+# ML Toolbox — .gitignore
+# =============================================================
+
+# ── Secrets & Environment ─────────────────────────────────────
+.env
+.env.local
+.env.*.local
+backend/.env
+
+# ── Python ───────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+sdist/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+.installed.cfg
+MANIFEST
+
+# ── Virtual Environments ─────────────────────────────────────
+venv/
+env/
+ENV/
+backend/venv/
+.venv/
+.env/
+
+# ── Trained Model Binaries (regenerate with train_models.py) ──
+models_data/
+*.joblib
+*.pkl
+*.pt
+*.pth
+*.h5
+*.onnx
+*.safetensors
+
+# ── SQLite Databases (runtime-generated) ─────────────────────
+*.db
+*.sqlite
+*.sqlite3
+backend/data/*.db
+
+# ── Logs & Runtime Output ────────────────────────────────────
+logs/
+*.log
+backend_test.log
+uvicorn_output.txt
+test_out.txt
+test_output.txt
+backend/output.json
+backend/output2.json
+
+# ── Node / Frontend ──────────────────────────────────────────
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+.npm
+
+# ── Build Artifacts ──────────────────────────────────────────
+dist/
+build/
+*.tsbuildinfo
+
+# ── Testing & Coverage ───────────────────────────────────────
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+*.py,cover
+nosetests.xml
+test-results/
+
+# ── IDE & Editor ─────────────────────────────────────────────
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+*.sublime-project
+*.sublime-workspace
+
+# ── OS Noise ─────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ── Misc patch/scratch scripts (dev-only, not project code) ──
+add_baseline_stats.py
+add_batch_endpoints.py
+add_batch_ui.py
+add_explain_buttons.py
+fix_main.py
+fix_routers.py
+frontend_cleanup.py
+frontend_cleanup2.py
+generate_samples.py
+patch_analytics.py
+patch_app.py
+patch_dashboard.py
+patch_datastudio.py
+patch_db.py
+patch_ds_log.py
+patch_ml.py
+patch_tour_classes.py
+refactor_frontend.py
+refactor_minillm.py
+refactor_minillm_tests.py
+refactor_ml.py
+refactor_tests.py
+remove_auth_backend.py
+rewrite_frontend.py
+scratch_err_revert.py
+scratch_eslint_fix.py
+update_db_schema.py
+update_docs.py
+update_schemas.py
+update_tests.py
+test_gemini.py
+test_gemini2.py

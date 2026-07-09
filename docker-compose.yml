@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: ml_toolbox_backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - DATABASE_URL=sqlite:///./data/ml_toolbox.db
+      - MODEL_DIR=/app/models_data
+      - ENVIRONMENT=production
+    volumes:
+      - sqlite_data:/app/data
+      - model_registry:/app/models_data
+    restart: unless-stopped
+    ports:
+      # Expose for direct access if needed, though frontend Nginx proxies to it internally
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: ml_toolbox_frontend
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+
+volumes:
+  sqlite_data:
+  model_registry:
